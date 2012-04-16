@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Google Maps Browser</string>
+  </property>
+  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionQuit"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionMoscow">
+   <property name="text">
+    <string>Moscow</string>
+   </property>
+  </action>
+  <action name="actionNewYork">
+   <property name="text">
+    <string>New York</string>
+   </property>
+  </action>
+  <action name="actionLondon">
+   <property name="text">
+    <string>London</string>
+   </property>
+  </action>
+  <action name="actionSanJose_CA">
+   <property name="text">
+    <string>San Jose CA</string>
+   </property>
+  </action>
+  <action name="actionBedford_MA">
+   <property name="text">
+    <string>Bedford MA</string>
+   </property>
+  </action>
+  <action name="actionSky">
+   <property name="text">
+    <string>Sky</string>
+   </property>
+  </action>
+  <action name="actionBorders">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Borders and Names</string>
+   </property>
+  </action>
+  <action name="actionRoads">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Roads</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
