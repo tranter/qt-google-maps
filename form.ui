@@ -24,7 +24,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="lePostalAddress"/>
      </item>
      <item>
       <widget class="QLabel" name="label_2">
@@ -64,6 +64,16 @@
       <url>
        <string>about:blank</string>
       </url>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QListWidget" name="lwMarkers"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QPushButton" name="pbRemoveMarker">
+     <property name="text">
+      <string>Remove marker</string>
      </property>
     </widget>
    </item>

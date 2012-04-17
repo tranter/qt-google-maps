@@ -11,6 +11,9 @@
       src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAMup3gPPlF6acrzVSasJOo7uyu12Uf5q8&sensor=false">
     </script>
     <script type="text/javascript">
+      var map;
+      var markers = [];
+
       function initialize() {
         var myOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
@@ -18,7 +21,7 @@
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           panControl: true
         };
-        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+        map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
       }
     </script>
   </head>
