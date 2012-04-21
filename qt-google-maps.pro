@@ -15,8 +15,12 @@ linux* {
 LIBS += ../qjson/build/lib/libqjson.so
 }
 
-win* {
-LIBS += ../qjson/build/lib/qjson0.dll
+win32-g++ {
+    LIBS += ../qjson/build/lib/qjson0.dll
+}
+
+win32-msvc* {
+    LIBS += ../qjson/build/lib/qjson0.lib
 }
 
 macx* {
