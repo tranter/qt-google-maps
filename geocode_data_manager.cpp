@@ -4,7 +4,7 @@
 #include <QDebug>
 
 
-const QString apiKey = "YOUR_MAPS_API_KEY_HERE";
+
 
 GeocodeDataManager::GeocodeDataManager(QObject *parent) :
     QObject(parent)
@@ -17,7 +17,7 @@ GeocodeDataManager::GeocodeDataManager(QObject *parent) :
 
 void GeocodeDataManager::getCoordinates(const QString& address)
 {
-    QString url = QString("http://maps.google.com/maps/geo?q=%1&key=%2&output=json&oe=utf8&sensor=false").arg(address).arg(apiKey);
+    QString url = QString("http://maps.google.com/maps/api/geocode/json?address=%1&sensor=false&language=en").arg(address);
     m_pNetworkAccessManager->get(QNetworkRequest(QUrl(url)));
 }
 
@@ -34,6 +34,7 @@ void GeocodeDataManager::replyFinished(QNetworkReply* reply)
     bool ok;
 
     // json is a QString containing the data to convert
+    //QVariant result = parser.parse (json.toLatin1(), &ok);
     QVariant result = parser.parse (json.toLatin1(), &ok);
     if(!ok)
     {
@@ -41,23 +42,26 @@ void GeocodeDataManager::replyFinished(QNetworkReply* reply)
         return;
     }
 
-    int code = result.toMap()["Status"].toMap()["code"].toInt();
-    if(code != 200)
+    QString code = result.toMap()["status"].toString();
+    qDebug() << "Code" << code;
+    if(code != "OK")
     {
         emit errorOccured(QString("Code of request is: %1").arg(code));
         return;
     }
 
-    QVariantList placeMarks = result.toMap()["Placemark"].toList();
-    if(placeMarks.count() == 0)
+    QVariantList results = result.toMap()["results"].toList();
+    if(results.count() == 0)
     {
         emit errorOccured(QString("Cannot find any locations"));
         return;
     }
 
-    double east  = placeMarks[0].toMap()["Point"].toMap()["coordinates"].toList()[0].toDouble();
-    double north = placeMarks[0].toMap()["Point"].toMap()["coordinates"].toList()[1].toDouble();
+    double east  = results[0].toMap()["geometry"].toMap()["location"].toMap()["lng"].toDouble();
+    double north = results[0].toMap()["geometry"].toMap()["location"].toMap()["lat"].toDouble();
 
     emit coordinatesReady(east, north);
 
+    QString address = results[0].toMap()["formatted_address"].toString();
+    emit addressReady(address);
 }

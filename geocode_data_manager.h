@@ -17,6 +17,7 @@ public:
 signals:
     void errorOccured(const QString&);
     void coordinatesReady(double east, double north);
+    void addressReady(const QString&);
 
 private slots:
     void replyFinished(QNetworkReply* reply);

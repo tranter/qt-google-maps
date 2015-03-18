@@ -17,6 +17,8 @@ Form::Form(QWidget *parent) :
     connect(&m_geocodeDataManager, SIGNAL(coordinatesReady(double,double)), this, SLOT(showCoordinates(double,double)));
     connect(&m_geocodeDataManager, SIGNAL(errorOccured(QString)), this, SLOT(errorOccured(QString)));
 
+    connect(&m_geocodeDataManager, SIGNAL(addressReady(QString)), ui->lePostalAddress, SLOT(setText(QString)));
+
     QWebSettings::globalSettings()->setAttribute(QWebSettings::PluginsEnabled, true);
     ui->lePostalAddress->setText("");
     ui->webView->setUrl(QUrl("qrc:/html/google_maps.html"));
